@@ -1,0 +1,6 @@
+import py_compile
+import os
+
+pyfile = os.environ.get('PYFILE')
+if pyfile:
+    py_compile.compile(pyfile, pyfile + 'c')
