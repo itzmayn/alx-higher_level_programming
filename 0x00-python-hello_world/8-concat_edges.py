@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-import builtins
-print(getattr(builtins, '__build_class__')("object-oriented programming with Python"))
+str = "Python is an interpreted, interactive, object-oriented programming\
+ language that combines remarkable power with very clear syntax"
+print(str[str.index("object"):str.index("g with")+len("g with")])

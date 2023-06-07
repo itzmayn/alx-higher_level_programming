@@ -1,30 +1,23 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
 /**
- * check_cycle - checks if a singly linked list has a cycle in it
- * @list: pointer to the head of the list
- * Return: 0 if there is no cycle, 1 if there is a cycle
+ * check_cycle - checks if a linked list contains a cycle
+ * @list: linked list
+ *
+ * Return: 1 if there is a cycle, 0 otherwise
  */
+
 int check_cycle(listint_t *list)
 {
-    listint_t *slow, *fast;
+	listint_t *slow = list, *fast = list; // Initialize two pointers: slow and fast
 
-    if (list == NULL)
-        return (0);
+	while (slow != NULL && fast != NULL && fast->next != NULL)
+	{
+		slow = slow->next; // Move slow pointer one step ahead
+		fast = fast->next->next; // Move fast pointer two steps ahead
+		if (slow == fast) // If slow and fast pointers meet, there is a cycle
+			return (1);
+	}
 
-    slow = list;
-    fast = list->next;
-
-    while (fast != NULL && fast->next != NULL)
-    {
-        if (slow == fast)
-            return (1);
-
-        slow = slow->next;
-        fast = fast->next->next;
-    }
-
-    return (0);
+	return (0); // If no cycle is found, return 0
 }

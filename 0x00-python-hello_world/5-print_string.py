@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-str = "Hello, World!"
-print(f"{str * 3}\n{str[:9]}\n")
+str = "Holberton School"
+print('{}{}{}' .format(str, str, str))
+print('{:.9}' .format(str))
