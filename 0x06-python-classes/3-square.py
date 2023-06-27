@@ -1,32 +1,38 @@
+#!/usr/bin/python3
+"""Square generation module for Python project 0x06
+"""
+
+
 class Square:
-    """A class representing a square"""
+    """Class defined for square generation.
 
+    Args:
+        size (int): length of one side of square
+
+    Attributes:
+        __size (int): length of one side of square
+
+    Raises:
+        TypeError: if size is not an integer
+        ValueError: if size is less than 0
+
+    """
     def __init__(self, size=0):
-        """
-        Initializes the square with a given size.
-
-        Args:
-        size (int): The size of the square.
-
-        Returns:
-        None
-        """
-        # Check if the size is an integer
         if type(size) is not int:
-            raise TypeError("size must be an integer")
-        # Check if the size is non-negative
-        elif size < 0:
-            raise ValueError("size must be >= 0")
+            raise TypeError('size must be an integer')
+        if size < 0:
+            raise ValueError('size must be >= 0')
         self.__size = size
 
     def area(self):
-        """
-        Calculates the area of the square.
+        """Calulates area of square.
 
-        Args:
-        None
+        Attributes:
+            __size (int): length of one side of square
 
         Returns:
-        int: The area of the square.
+            area (int): length of one side, squared
+
         """
-        return self.__size * self.__size
+        area = self.__size * self.__size
+        return area
