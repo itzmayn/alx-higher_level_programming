@@ -5,30 +5,29 @@ advances file numbering +1 for every task after 0.
 
 
 def text_indentation(text):
-    """Function ...
+    """Indent the given text based on specified delimiters.
 
     Args:
-        text (str): text to be edited
+        text (str): Text to be indented.
+
+    Raises:
+        TypeError: If the input is not a string.
 
     """
-    if type(text) is not str:
+    if not isinstance(text, str):
         raise TypeError('text must be a string')
 
-    j = 0
-    delims = '.?:'
+    delimiters = '.?:'
 
-    for i, char in enumerate(text):
-        for delim in delims:
-            if char is delim:
-                j += 1
-                text = text[:i + j] + ' ' + text[i + j:]
+    for delimiter in delimiters:
+        text = text.replace(delimiter, delimiter + ' ')
 
-    list = text.split()
+    words = text.split()
 
-    for word in list:
-        if word[-1:] is "." or word[-1:] is "?" or word[-1:] is ":":
-            print(word, end="\n\n")
-        elif word is list[len(list) - 1]:
-            print(word, end="")
+    for i, word in enumerate(words):
+        if word.endswith(('.', '?', ':')):
+            print(word, end='\n\n')
+        elif i == len(words) - 1:
+            print(word, end='')
         else:
-            print(word, end=" ")
+            print(word, end=' ')
