@@ -1,21 +1,13 @@
 #!/usr/bin/python3
 """Script that fetches https://alx-intranet.hbtn.io/status."""
-import urllib.request
+from urllib.request import Request, urlopen
 
-def fetch_and_display_status(url):
-    try:
-        with urllib.request.urlopen(url) as response:
-            content = response.read()
-            utf8_content = content.decode('utf-8')
-            print("Body response:")
-            print("    - type:", type(content))
-            print("    - content:", content)
-            print("    - utf8 content:", utf8_content)
-
-    except Exception as e:
-        print(e)
 
 if __name__ == "__main__":
-    url = 'https://alx-intranet.hbtn.io/status'
-    fetch_and_display_status(url)
-
+    req = Request("https://alx-intranet.hbtn.io/status")
+    with urlopen(req) as response:
+        body = response.read()
+        print("Body response:")
+        print("\t- type: {}".format(type(body)))
+        print("\t- content: {}".format(body))
+        print("\t- utf8 content: {}".format(body.decode("utf-8")))
