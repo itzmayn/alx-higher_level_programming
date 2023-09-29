@@ -10,10 +10,10 @@ from urllib.request import Request, urlopen
 
 
 if __name__ == "__main__":
-    url = argv[1]
-    value = {"email": argv[2]}
-    data = urlencode(value).encode("ascii")
-    req = Request(url, data)
+    my_url = argv[1]
+    v = {"email": argv[2]}
+    data = urlencode(v).encode("ascii")
+    req = Request(my_url, data)
 
     with urlopen(req) as response:
         print(response.read().decode("utf-8", "replace"))
